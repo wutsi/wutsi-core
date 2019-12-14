@@ -1,5 +1,6 @@
 package com.wutsi.core.util
 
+import java.lang.IllegalArgumentException
 import java.math.BigDecimal
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
@@ -28,7 +29,9 @@ class Money (
         }
     }
 
-    val str: String? = null
+    var str: String? = null
+
+    fun multiply(factor: BigDecimal) = Money(value?.multiply(factor), currencyCode)
 
     fun toBigDecimal(): BigDecimal {
         val currency = if (currencyCode == null) null else Currency.getInstance(currencyCode)
@@ -54,17 +57,31 @@ class Money (
     }
 
     override fun toString() : String {
-        if (currencyCode == null){
-            return ""
+        if (str != null) {
+            return str!!
         }
 
-        val currency = Currency.getInstance(currencyCode)
-        val pattern = if (currency.defaultFractionDigits == 0) "###,###" else "###,###.00"
-        val locale = localeByCurrency[currencyCode]
+        if (value == null || currencyCode == null || currencyCode.isEmpty()){
 
-        val formatter = DecimalFormat(pattern, DecimalFormatSymbols(locale))
-        val text = formatter.format(value?.toDouble())
-        return "$text ${currency.getSymbol(locale)}"
+            str = ""
+
+        } else {
+
+            try {
+
+                val currency = Currency.getInstance(currencyCode)
+                val pattern = if (currency.defaultFractionDigits == 0) "###,###" else "###,###.00"
+                val locale = localeByCurrency[currencyCode]
+
+                val formatter = DecimalFormat(pattern, DecimalFormatSymbols(locale))
+                val text = formatter.format(value?.toDouble())
+                str = "$text ${currency.getSymbol(locale)}"
+
+            } catch (ex: IllegalArgumentException){
+                str = ""
+            }
+        }
+        return str!!
     }
 
     private fun toBigDecimal(currency: Currency?): BigDecimal {
