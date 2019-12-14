@@ -1,4 +1,4 @@
-package com.wutsi.core.unit
+package com.wutsi.core.util
 
 import junit.framework.Assert.assertEquals
 import org.junit.Test

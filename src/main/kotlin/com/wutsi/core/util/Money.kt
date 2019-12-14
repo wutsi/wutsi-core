@@ -1,4 +1,4 @@
-package com.wutsi.core.unit
+package com.wutsi.core.util
 
 import java.math.BigDecimal
 import java.text.DecimalFormat
