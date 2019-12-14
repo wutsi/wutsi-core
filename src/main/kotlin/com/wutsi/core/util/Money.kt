@@ -33,6 +33,26 @@ class Money (
 
     fun multiply(factor: BigDecimal) = Money(value?.multiply(factor), currencyCode)
 
+    fun isZero() = value == null || value == BigDecimal.ZERO
+
+    fun minus(other: Money): Money {
+        if (other.value == null) {
+            return Money(value, currencyCode)
+        } else if (value == null) {
+            return Money(-other.value, currencyCode)
+        } else {
+            return Money(value - other.value, currencyCode)
+        }
+    }
+
+    fun divide(other: Money): Money {
+        if (other.value == null || value == null || other.value == BigDecimal.ZERO) {
+            return Money(null, currencyCode)
+        } else {
+            return Money((value.toDouble() / other.value.toDouble()).toBigDecimal(), currencyCode)
+        }
+    }
+
     fun toBigDecimal(): BigDecimal {
         val currency = if (currencyCode == null) null else Currency.getInstance(currencyCode)
         return toBigDecimal(currency)

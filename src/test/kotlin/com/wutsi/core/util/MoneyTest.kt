@@ -31,13 +31,69 @@ class MoneyTest {
     fun testMultiply() {
         val result = Money(150.99.toBigDecimal(), "USD").multiply(2.toBigDecimal())
 
-        assertEquals(301.98.toBigDecimal(), result.value)
+        assertEquals(301.98.toBigDecimal(), result.toBigDecimal())
         assertEquals("USD", result.currencyCode)
     }
 
     @Test
     fun testMultiplyNull() {
         val result = Money(null, "USD").multiply(2.toBigDecimal())
+
+        assertNull(result.value)
+        assertEquals("USD", result.currencyCode)
+    }
+
+    @Test
+    fun testMinus() {
+        val result = Money(150.99.toBigDecimal(), "USD").minus(Money(100.toBigDecimal(), "USD"))
+
+        assertEquals(50.99.toBigDecimal(), result.toBigDecimal())
+        assertEquals("USD", result.currencyCode)
+    }
+
+    @Test
+    fun testMinusNull() {
+        val result = Money(150.99.toBigDecimal(), "USD").minus(Money(null, "USD"))
+
+        assertEquals(150.99.toBigDecimal(), result.toBigDecimal())
+        assertEquals("USD", result.currencyCode)
+    }
+
+    @Test
+    fun testMinusNull2() {
+        val result = Money(null, "USD").minus(Money(50.99.toBigDecimal(), "USD"))
+
+        assertEquals((-50.99).toBigDecimal(), result.toBigDecimal())
+        assertEquals("USD", result.currencyCode)
+    }
+
+    @Test
+    fun testDivide() {
+        val result = Money(20.toBigDecimal(), "USD").divide(Money(3.toBigDecimal(), "USD"))
+
+        assertEquals(6.67.toBigDecimal(), result.toBigDecimal())
+        assertEquals("USD", result.currencyCode)
+    }
+
+    @Test
+    fun testDivideZero() {
+        val result = Money(20.toBigDecimal(), "USD").divide(Money(0.toBigDecimal(), "USD"))
+
+        assertNull(result.value)
+        assertEquals("USD", result.currencyCode)
+    }
+
+    @Test
+    fun testDivideNull() {
+        val result = Money(20.toBigDecimal(), "USD").divide(Money(null, "USD"))
+
+        assertNull(result.value)
+        assertEquals("USD", result.currencyCode)
+    }
+
+    @Test
+    fun testDivideNull2() {
+        val result = Money(null, "USD").divide(Money(2.toBigDecimal(), "USD"))
 
         assertNull(result.value)
         assertEquals("USD", result.currencyCode)
