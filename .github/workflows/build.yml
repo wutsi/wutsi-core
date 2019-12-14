@@ -22,9 +22,3 @@ jobs:
         mkdir ~/.m2
         cp settings.xml ~/.m2/settings.xml
         mvn deploy
-
-    - name: codecov
-      uses: codecov/codecov-action@v1.0.5
-      with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          fail_ci_if_error: true
