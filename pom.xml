@@ -82,7 +82,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Maven Packages</name>
-            <url>https://maven.pkg.github.com/wutsi/wutsi-oms-client</url>
+            <url>https://maven.pkg.github.com/wutsi/wutsi-core</url>
         </repository>
     </distributionManagement>
 
