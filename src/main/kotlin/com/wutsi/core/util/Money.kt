@@ -64,7 +64,7 @@ class Money (
 
         val formatter = DecimalFormat(pattern, DecimalFormatSymbols(locale))
         val text = formatter.format(value?.toDouble())
-        return "$text ${currency.symbol}"
+        return "$text ${currency.getSymbol(locale)}"
     }
 
     private fun toBigDecimal(currency: Currency?): BigDecimal {
