@@ -1,4 +1,4 @@
-package com.wutsi.web.service.resolver
+package com.wutsi.core.service.resolver
 
 interface StoreResolver {
     fun name() : String

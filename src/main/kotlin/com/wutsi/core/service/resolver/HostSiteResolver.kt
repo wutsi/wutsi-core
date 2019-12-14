@@ -1,6 +1,5 @@
 package com.wutsi.core.service.resolver
 
-import com.wutsi.core.service.resolver.SiteResolver
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Profile
