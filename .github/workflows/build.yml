@@ -19,6 +19,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        mkdir ~/.m2
-        cp settings.xml ~/.m2/settings.xml
-        mvn deploy
+        mvn -s settings.xml deploy
