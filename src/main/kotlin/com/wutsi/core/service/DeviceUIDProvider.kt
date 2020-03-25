@@ -1,15 +1,10 @@
 package com.wutsi.core.service
 
-import org.springframework.context.annotation.Scope
-import org.springframework.context.annotation.ScopedProxyMode
-import org.springframework.stereotype.Service
-import java.util.*
+import java.util.UUID
 import javax.servlet.http.Cookie
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-@Service
-@Scope(value="request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 open class DeviceUIDProvider{
     companion object {
         const val COOKIE_NAME = "__w_duaid"

@@ -1,7 +1,6 @@
 package com.wutsi.core.servlet
 
 import com.wutsi.core.service.DeviceUIDProvider
-import org.springframework.stereotype.Service
 import javax.servlet.Filter
 import javax.servlet.FilterChain
 import javax.servlet.FilterConfig
@@ -10,8 +9,7 @@ import javax.servlet.ServletResponse
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-@Service
-class DeviceUIDFilter(private val duid: DeviceUIDProvider): Filter {
+open class DeviceUIDFilter(private val duid: DeviceUIDProvider): Filter {
     override fun destroy() {
     }
 
