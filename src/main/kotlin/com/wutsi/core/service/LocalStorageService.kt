@@ -6,42 +6,32 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
-import java.util.UUID
 
-open class LocalStorageService : StorageService {
+open class LocalStorageService(
+        private val directory: String,
+        private val baseUrl: String
+) : StorageService {
     companion object {
         const val BUF_SIZE = 1024
     }
 
-    lateinit var directory: String
-    lateinit var url: String
-
     @Throws(IOException::class)
-    override fun store(storeId:Long, folder: String, filename: String, content: InputStream, contentType: String?): String {
-        val path = path(storeId, folder, filename)
+    override fun store(path: String, content: InputStream, contentType: String?): String {
         val f = File("$directory/$path")
         f.parentFile.mkdirs()
 
         FileOutputStream(f).use({ out ->
             content.copyTo(out, BUF_SIZE)
-            return "${url}/$path"
+            return "${baseUrl}/$path"
         })
     }
 
     override fun get(url: String, os: OutputStream) {
-        val path = url.substring(this.url.length)
+        val path = url.substring(this.baseUrl.length)
         val file = File("$directory/$path")
         val fis = FileInputStream(file);
         fis.use {
             fis.copyTo(os, BUF_SIZE)
         }
     }
-
-    private fun path(storeId: Long, folder: String, filename: String) = String.format(
-            "%s/%s/%s/%s",
-            storeId,
-            folder,
-            UUID.randomUUID().toString(),
-            filename
-    )
 }

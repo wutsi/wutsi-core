@@ -9,7 +9,7 @@ interface StorageService {
      * Return the file URL
      */
     @Throws(IOException::class)
-    fun store(storeId: Long, folder: String, filename: String, content: InputStream, contentType: String? = null): String
+    fun store(path: String, content: InputStream, contentType: String? = null): String
 
     @Throws(IOException::class)
     fun get(url: String, os: OutputStream)
