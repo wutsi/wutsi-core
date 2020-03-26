@@ -1,4 +1,4 @@
-package com.wutsi.api.storage.service
+package com.wutsi.core.service
 
 import java.io.File
 import java.io.FileInputStream

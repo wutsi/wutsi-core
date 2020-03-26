@@ -1,6 +1,5 @@
 package com.wutsi.core.service
 
-import com.wutsi.api.storage.service.LocalStorageService
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
