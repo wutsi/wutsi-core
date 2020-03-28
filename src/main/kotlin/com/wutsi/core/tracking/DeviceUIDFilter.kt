@@ -1,6 +1,5 @@
-package com.wutsi.core.servlet
+package com.wutsi.core.tracking
 
-import com.wutsi.core.service.DeviceUIDProvider
 import javax.servlet.Filter
 import javax.servlet.FilterChain
 import javax.servlet.FilterConfig

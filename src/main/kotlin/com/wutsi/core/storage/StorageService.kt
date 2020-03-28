@@ -1,4 +1,4 @@
-package com.wutsi.core.service
+package com.wutsi.core.storage
 
 import java.io.IOException
 import java.io.InputStream

@@ -1,4 +1,4 @@
-package com.wutsi.core.service
+package com.wutsi.core.tracking
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

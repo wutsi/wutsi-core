@@ -1,4 +1,4 @@
-package com.wutsi.core.service
+package com.wutsi.core.storage
 
 import org.junit.After
 import org.junit.Assert.assertEquals

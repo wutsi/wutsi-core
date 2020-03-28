@@ -1,6 +1,5 @@
-package com.wutsi.core.servlet
+package com.wutsi.core.tracking
 
-import com.wutsi.core.service.DeviceUIDProvider
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
