@@ -24,7 +24,7 @@ Here are the problems this library solve:
 
 
 # Usage
-```
+```xml
 <dependency>
     <groupId>com.wutsi</groupId>
     <artifactId>wutsi-core</artifactId>
