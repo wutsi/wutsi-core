@@ -3,18 +3,36 @@
 ![JDK](https://img.shields.io/badge/jdk-1.8-brightgreen.svg)
 ![](https://img.shields.io/badge/language-kotlin-blue.svg)
 
-# wutsi-core
-This is a library to provide standardized solutions for commons problems encountered by developers who are building webservices.
- 
-The main benefit of this library is to help developers to reduce boilerplate in their code. 
+
+# About
+This is a library that provide standardize solutions to common problem.
+
+
+# Motivation
+Here are the reasons to use this library:
+- **Standardization**: It provide standardizes solution for commons problems encountered by developers.
+- **Simplify**: It reduce boilerplate code, no need to re-implement again and again the same solutions in inconsitent way.
 
 
 # Features
-- HTTP Utility for calling webservices
-- Commons HTTP Exceptions for webservices
-- Transactional logger for webservice
-- Integration of tracing HTTP headers for correlating HTTP calls between different webservices
-- API for managing files on local filesystem or cloud 
+Here are the problems this library solve:
+- How to call HTTP service?
+- How to handle webservice exceptions?
+- How to log webservice calls?
+- How to trace and correlate logs between different webservices?
+- How to manage file on virtual filesystem (local or cloud)? 
+
+
+# Usage
+```
+<dependency>
+    <groupId>com.wutsi</groupId>
+    <artifactId>wutsi-core</artifactId>
+    <version>[LATEST VERSION]</version>
+</dependency>
+```
+
+View package details [here](https://github.com/wutsi/wutsi-core/packages)
 
 # Dependencies
 - javax-servlet.servlet-api (scope: provided)
