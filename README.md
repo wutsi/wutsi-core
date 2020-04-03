@@ -3,13 +3,18 @@
 ![JDK](https://img.shields.io/badge/jdk-1.8-brightgreen.svg)
 ![](https://img.shields.io/badge/language-kotlin-blue.svg)
 
-Core library that contains commons reusable services like:
+# wutsi-core
+This is a library to provide standardized solutions for commons problems encountered by developers who are building webservices.
+ 
+The main benefit of this library is to help developers to reduce boilerplate in their code. 
 
-- Logging
-- HTTP
-- Tracing
-- File Storage
-- Commons Exceptions
+
+# Features
+- HTTP Utility for calling webservices
+- Commons HTTP Exceptions for webservices
+- Transactional logger for webservice
+- Integration of tracing HTTP headers for correlating HTTP calls between different webservices
+- API for managing files on local filesystem or cloud 
 
 # Dependencies
 - javax-servlet.servlet-api (scope: provided)
