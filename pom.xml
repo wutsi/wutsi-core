@@ -6,7 +6,7 @@
 
     <groupId>com.wutsi</groupId>
     <artifactId>wutsi-core</artifactId>
-    <version>1.0.13</version>
+    <version>1.0.14</version>
 
     <properties>
         <jacoco.threshold.line>0.50</jacoco.threshold.line>
