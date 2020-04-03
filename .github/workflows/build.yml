@@ -20,3 +20,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         mvn -s settings.xml deploy
+
+    - name: codecov
+      uses: codecov/codecov-action@v1.0.5
+      with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
