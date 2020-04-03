@@ -5,21 +5,21 @@
 
 
 # About
-This is a library that provide standardize solutions to common problem.
+This is a library that provide standardize solutions for solving common problems.
 
 
 # Motivation
 Here are the reasons to use this library:
 - **Standardization**: It provide standardizes solution for commons problems encountered by developers.
-- **Simplify**: It reduce boilerplate code, no need to re-implement again and again the same solutions in inconsitent way.
+- **Simplify**: It reduce boilerplate code, no need to re-implement again and again the same solutions in inconsistent way.
 
 
 # Features
 Here are the problems this library solve:
-- How to call HTTP service?
+- How to call HTTP webservice?
 - How to handle webservice exceptions?
 - How to log webservice calls?
-- How to trace and correlate logs between different webservices?
+- How to correlate logs between different webservices?
 - How to manage file on virtual filesystem (local or cloud)? 
 
 
