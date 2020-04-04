@@ -42,7 +42,7 @@ open class HttpExceptionHandler(private val objectMapper: ObjectMapper) {
         }
     }
 
-    private fun extractErrorResponse(ex: HttpStatusCodeException): ErrorResponse {
+    fun extractErrorResponse(ex: HttpStatusCodeException): ErrorResponse {
         try {
             return objectMapper.readValue(ex.responseBodyAsString, ErrorResponse::class.java)
         } catch (e: Exception){

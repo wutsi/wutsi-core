@@ -1,14 +1,12 @@
+`wutsi-core` provide standardized classes for addressing common concerns for micro-services development (logging, tracing, exception handling etc.).
+
+
 ![](https://github.com/wutsi/wutsi-core/workflows/build/badge.svg)
 [![](https://img.shields.io/codecov/c/github/wutsi/wutsi-core/master.svg)](https://codecov.io/gh/wutsi/wutsi-core)
 ![](https://img.shields.io/badge/jdk-1.8-brightgreen.svg)
 ![](https://img.shields.io/badge/language-kotlin-blue.svg)
 ![](https://img.shields.io/badge/maven-3.6+-blue)
 
-
-`wutsi-core` provide standardized classes for addressing common concerns for micro-services development:
-- Distributed logging an tracing
-- Virtual file management (local or cloud)
-- Consistent webservice exception handling
 
 
 # Prerequisites

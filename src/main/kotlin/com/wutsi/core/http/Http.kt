@@ -6,6 +6,7 @@ import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod
 import org.springframework.http.ResponseEntity
+import org.springframework.web.client.HttpStatusCodeException
 import org.springframework.web.client.RestClientException
 import org.springframework.web.client.RestTemplate
 
@@ -52,7 +53,8 @@ open class Http(
         var response: ResponseEntity<T>? = null
         try {
 
-            return rest.exchange(url, method, entity, responseType)
+            response = rest.exchange(url, method, entity, responseType)
+            return response
 
         } catch (ex: Exception) {
 
@@ -90,11 +92,18 @@ open class Http(
         logger.add("Success", exception == null)
         headers.keys.forEach{ logger.add(it, headers[it]) }
 
-        if (exception == null) {
-            logger.log()
-        } else {
-            logger.log(exception)
+        if (exception != null) {
+            logger.add("Exception", exception.javaClass.name)
+            logger.add("ExceptionMessage", exception.message)
+
+            if (exception is HttpStatusCodeException) {
+                val errorResponse = exceptionHandler.extractErrorResponse(exception)
+                if (!errorResponse.error.code.isEmpty()) {
+                    logger.add("HttpResponseErrorCode", errorResponse.error.code)
+                }
+            }
         }
+        logger.log()
     }
 
     private fun addHeader(name: String, value: String?, headers: HttpHeaders){
