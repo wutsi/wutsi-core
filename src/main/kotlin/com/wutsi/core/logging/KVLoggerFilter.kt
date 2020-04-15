@@ -74,5 +74,7 @@ class KVLoggerFilter(private val kv: KVLogger, var clock: Clock?) : Filter {
         kv.add("HttpResponseEncoding", response.getHeader("Content-Encoding"))
         kv.add("HttpResponseType", response.getHeader("Content-Type"))
         kv.add("HttpResponseLength", response.getHeader("Content-Length"))
+
+        request.parameterMap.keys.forEach{ kv.add(it, request.getParameterValues(it)) }
     }
 }
