@@ -41,8 +41,6 @@ class KVLoggerFilterTest {
     fun setUp() {
         filter = KVLoggerFilter(kv, clock)
 
-        System.setProperty("application.environment", "test")
-
         `when`(request.requestURI).thenReturn("/foo/bar")
         `when`(request.getHeader("Accept-Encoding")).thenReturn("gzip")
         `when`(request.getHeader("Content-Type")).thenReturn("text/plain")
@@ -68,6 +66,14 @@ class KVLoggerFilterTest {
                 .thenReturn(1000L)
                 .thenReturn(1100L)
 
+        val value1 = arrayOf("value1.1")
+        val value2 = arrayOf("value2.1", "value2.2")
+        `when`(request.parameterMap).thenReturn(mapOf(
+                "param1" to value1,
+                "param2" to value2
+        ))
+
+
         // When
         filter.doFilter(request, response, chain)
 
@@ -89,6 +95,8 @@ class KVLoggerFilterTest {
         verify<KVLogger>(kv).add(TraceContext.DEVICE_UID, "device-uid")
         verify<KVLogger>(kv).add(TraceContext.TRACE_ID, "trace-id")
 
+        verify<KVLogger>(kv).add("param1", value1.toList())
+        verify<KVLogger>(kv).add("param2", value2.toList())
 
         verify<KVLogger>(kv).log()
     }
