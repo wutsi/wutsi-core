@@ -17,7 +17,7 @@ open class LocalStorageService(
     }
 
     @Throws(IOException::class)
-    override fun store(path: String, content: InputStream, contentType: String?): URL {
+    override fun store(path: String, content: InputStream, contentType: String?, ttlSeconds: Int?): URL {
         val f = toFile(path)
         f.parentFile.mkdirs()
 

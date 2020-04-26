@@ -7,7 +7,7 @@ import java.net.URL
 
 interface StorageService {
     @Throws(IOException::class)
-    fun store(path: String, content: InputStream, contentType: String? = null): URL
+    fun store(path: String, content: InputStream, contentType: String? = null, ttlSeconds: Int? = null): URL
 
     @Throws(IOException::class)
     fun get(url: URL, os: OutputStream)
