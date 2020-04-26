@@ -61,6 +61,7 @@ class KVLoggerFilter(private val kv: KVLogger, var clock: Clock?) : Filter {
         kv.add("Latency", latencyMillis)
 
         kv.add("HttpRequestURI", request.requestURI)
+        kv.add("HttpRequestMethod", request.method)
         kv.add("HttpRequestEncoding", request.getHeader("Accept-Encoding"))
         kv.add("HttpRequestType", request.getHeader("Content-Type"))
         kv.add("HttpRequestAuthorization", request.getHeader("Authorization"))
