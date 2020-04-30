@@ -38,6 +38,7 @@ open class Http(
         addHeader(TraceContext.MESSAGE_ID, trace.messageId(), headers)
         addHeader(TraceContext.PARENT_MESSAGE_ID, trace.parentMessageId(), headers)
         addHeader(TraceContext.DEVICE_UID, trace.deviceUid(), headers)
+        addHeader(TraceContext.USER_AGENT, trace.userAgent(), headers)
         return headers
     }
 

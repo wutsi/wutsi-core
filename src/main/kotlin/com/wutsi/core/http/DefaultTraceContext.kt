@@ -11,4 +11,5 @@ open class DefaultTraceContext(
     override fun traceId() = traceId
     override fun messageId() = UUID.randomUUID().toString()
     override fun parentMessageId() = null
+    override fun userAgent() = null
 }

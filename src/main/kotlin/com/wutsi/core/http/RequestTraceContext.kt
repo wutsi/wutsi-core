@@ -38,6 +38,8 @@ open class RequestTraceContext(private val request: HttpServletRequest): TraceCo
         return if (id == null) "UNKOWN" else id
     }
 
+    override fun userAgent() = request.getHeader(TraceContext.USER_AGENT)
+
     override fun traceId(): String {
         val id = request.getHeader(TraceContext.TRACE_ID)
         if (id == null){
