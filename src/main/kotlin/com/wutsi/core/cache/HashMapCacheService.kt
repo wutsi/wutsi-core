@@ -1,7 +1,9 @@
 package com.wutsi.core.cache
 
+import java.util.concurrent.ConcurrentHashMap
+
 class HashMapCacheService: CacheService {
-    private val data: MutableMap<String, String> = mutableMapOf()
+    private val data: ConcurrentHashMap<String, String> =  ConcurrentHashMap()
 
     override fun get(key: String): String? {
         return data[key]
