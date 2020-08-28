@@ -6,14 +6,16 @@
 
     <groupId>com.wutsi</groupId>
     <artifactId>wutsi-core</artifactId>
-    <version>1.13.0</version>
+    <version>1.14.0</version>
 
     <properties>
-        <jacoco.threshold.line>0.50</jacoco.threshold.line>
-        <jacoco.threshold.class>0.50</jacoco.threshold.class>
+        <jacoco.threshold.line>0.49</jacoco.threshold.line>
+        <jacoco.threshold.class>0.49</jacoco.threshold.class>
 
 
         <!-- Library versions - in ALPHABETICAL ORDER-->
+        <common-lang.version>2.4</common-lang.version>
+
         <javax.servlet.version>3.1.0</javax.servlet.version>
         <junit.version>4.12</junit.version>
         <jackson.version>2.10.3</jackson.version>
@@ -75,6 +77,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${common-lang.version}</version>
+        </dependency>
 
         <!-- KOTLIN -->
         <dependency>
