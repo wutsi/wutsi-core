@@ -6,11 +6,11 @@
 
     <groupId>com.wutsi</groupId>
     <artifactId>wutsi-core</artifactId>
-    <version>1.14.0</version>
+    <version>1.15.0</version>
 
     <properties>
-        <jacoco.threshold.line>0.49</jacoco.threshold.line>
-        <jacoco.threshold.class>0.49</jacoco.threshold.class>
+        <jacoco.threshold.line>0.40</jacoco.threshold.line>
+        <jacoco.threshold.class>0.40</jacoco.threshold.class>
 
 
         <!-- Library versions - in ALPHABETICAL ORDER-->
@@ -22,6 +22,7 @@
         <kotlin.version>1.2.41</kotlin.version>
         <mockito.version>2.15.0</mockito.version>
         <slf4j.version>1.7.29</slf4j.version>
+        <javax.persistence.version>2.2</javax.persistence.version>
         <spring.version>5.1.11.RELEASE</spring.version>
     </properties>
 
@@ -42,6 +43,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>${javax.persistence.version}</version>
             <scope>provided</scope>
         </dependency>
 
