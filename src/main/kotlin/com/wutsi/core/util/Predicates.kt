@@ -4,7 +4,7 @@ import javax.persistence.Query
 
 
 object Predicates {
-    fun or(vararg statements: String): String {
+    fun or(vararg statements: String?): String {
         return "("  +
                 statements.filter { it != null }.joinToString (separator = " OR ")  +
                 ")"
