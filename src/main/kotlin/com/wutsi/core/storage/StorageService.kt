@@ -6,6 +6,8 @@ import java.io.OutputStream
 import java.net.URL
 
 interface StorageService {
+    fun contains(url: URL): Boolean
+
     @Throws(IOException::class)
     fun store(path: String, content: InputStream, contentType: String? = null, ttlSeconds: Int? = null): URL
 

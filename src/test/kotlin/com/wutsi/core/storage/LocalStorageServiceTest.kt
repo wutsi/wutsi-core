@@ -2,6 +2,7 @@ package com.wutsi.core.storage
 
 import org.junit.After
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -18,6 +19,12 @@ class LocalStorageServiceTest {
     @After
     fun tearDown() {
         delete(File(directory))
+    }
+
+    @Test
+    fun contains() {
+        assertTrue(storage.contains(URL("$baseUrl/1/2/text.txt")))
+        assertFalse(storage.contains(URL("https://www.google.com/1/2/text.txt")))
     }
 
     @Test

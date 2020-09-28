@@ -16,6 +16,8 @@ open class LocalStorageService(
         const val BUF_SIZE = 1024
     }
 
+    override fun contains(url: URL) =  url.toString().startsWith(baseUrl)
+
     @Throws(IOException::class)
     override fun store(path: String, content: InputStream, contentType: String?, ttlSeconds: Int?): URL {
         val f = toFile(path)
