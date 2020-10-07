@@ -4,10 +4,20 @@ import javax.persistence.Query
 
 
 object Predicates {
-    fun or(vararg statements: String?): String {
+    fun or(vararg statements: String?): String? {
+        if (statements == null || statements.size == 0){
+            return null
+        }
         return "("  +
                 statements.filter { it != null }.joinToString (separator = " OR ")  +
                 ")"
+    }
+
+    fun not(vararg condition: String?): String? {
+        if (condition == null || condition.isEmpty()){
+            return null
+        }
+        return "NOT ($condition)"
     }
 
     fun `in`(name: String, values: Collection<Any>?): String? {
