@@ -5,19 +5,23 @@ import javax.persistence.Query
 
 object Predicates {
     fun or(vararg statements: String?): String? {
-        if (statements == null || statements.size == 0){
+        val conditions = statements.filter { it != null }
+        if (conditions.isEmpty()){
             return null
+        } else if (conditions.size == 1) {
+            return conditions[0]
+        } else {
+            return "(" + conditions.joinToString (separator = " OR ") + ")"
         }
-        return "("  +
-                statements.filter { it != null }.joinToString (separator = " OR ")  +
-                ")"
     }
 
-    fun not(vararg condition: String?): String? {
-        if (condition == null || condition.isEmpty()){
+    fun not(vararg statements: String?): String? {
+        val conditions = statements.filter { it != null }
+        if (conditions.isEmpty()){
             return null
+        } else {
+            return "NOT ($conditions)"
         }
-        return "NOT ($condition)"
     }
 
     fun `in`(name: String, values: Collection<Any>?): String? {
