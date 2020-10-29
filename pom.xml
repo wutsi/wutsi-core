@@ -6,7 +6,7 @@
 
     <groupId>com.wutsi</groupId>
     <artifactId>wutsi-core</artifactId>
-    <version>1.20.0</version>
+    <version>1.20.1</version>
 
     <properties>
         <jacoco.threshold.line>0.40</jacoco.threshold.line>
@@ -18,7 +18,7 @@
 
         <hibernate.version>5.2.17.Final</hibernate.version>
         <javax.servlet.version>3.1.0</javax.servlet.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <jackson.version>2.10.3</jackson.version>
         <kotlin.version>1.2.41</kotlin.version>
         <mockito.version>2.15.0</mockito.version>
