@@ -48,7 +48,7 @@ All REST calls will include the following headers:
 - `X-Parent-Message-ID`: Identifier representing the parent of *Message* (Optional).
 
 All HTTP errors will be mapped to the Wutsi REST exceptions.
- 
+
 ## Logging
 - [KVLogger](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/logging/KVLogger.kt)
 should be used for outputing logs in the format key/value pair.
@@ -69,11 +69,31 @@ is a Servlet filter that logs each HTTP calls. Each logs will always contains th
  - `HttpResponseEncoding`: The response encoding
  - `HttpResponseType`: The response mime type
  - `HttpResponseLength`: The response content length
+
+## Tracking
+- [DeviceUIDProvider](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/tracking/DeviceUIDProvider.kt)
+is used to get or set the client device unique identifier.
+- [DeviceUIDFilter](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/tracking/DeviceUIDFilter.kt)
+is a servlet filter that ensure that each HTTP request is stamped with a unique device identifier.
  
 ## Storage
 - [StorageService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/storage/StorageService.kt)
 is an interface to storing/retrieving files.
 - [LocalStorageService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/storage/StorageService.kt)
 is the implementation for storing/retrieving files on a local hard drive.
-
  
+## Caching
+- [CacheService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/cache/CacheService.kt)
+is an interface for accessing a cache.
+- [HashMapCacheService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/cache/HashMapCacheService.kt)
+is the implementation with an in-memory hashmap as cache. 
+- [NullCacheService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/cache/NullCacheService.kt)
+is the implementation to perform no-caching. 
+
+## Other
+- [DateUtils](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/util/DateUtils.kt)
+- [DurationUtils](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/util/DurationUtils.kt)
+- [NumberUtils](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/util/NumberUtils.kt)
+- [Predicates](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/util/Predicates.kt)
+- [CamelCaseToSnakeCaseNamingStrategy](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/hibernate/CamelCaseToSnakeCaseNamingStrategy.kt)
+ [Hibernate](https://hibernate.org/) class for supporting mapping from camel case (in POJO) to snake case (in DB).
