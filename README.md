@@ -54,21 +54,21 @@ All HTTP errors will be mapped to the Wutsi REST exceptions.
 should be used for outputing logs in the format key/value pair.
 - [KVLoggerFilter](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/logging/KVLoggerFilter.kt)
 is a Servlet filter that logs each HTTP calls. Each logs will always contains the following information:
- - `HttpRequestURI`: The request URI (Ex. `HttpRequestURI=/v1/user`)
- - `HttpRequestMethod`: The request URI (Ex. `HttpRequestMethod=GET`)
- - `HttpRequestEncoding`: The value of the request header `Accept-Encoding`
- - `HttpRequestType`: The value of the request header `Content-Type`
- - `HttpRequestAuthorization`: The value of the request header `Authorization` 
- - `X-Client-ID`: The value of the request header `X-Client-ID`
- - `X-Device-UID`: The value of the request header `X-Device-UID`
- - `User-Agent`: The value of the request header `User-Agent`
- - `X-Trace-ID`: The value of the request header `X-Trace-ID`
- - `X-Message-ID`: The value of the request header `X-Message-ID`
- - `X-Parent-Message-ID`: The value of the request header `X-Parent-Message-ID`
- - `HttpResponseStatus`: The response status code
- - `HttpResponseEncoding`: The response encoding
- - `HttpResponseType`: The response mime type
- - `HttpResponseLength`: The response content length
+  - `HttpRequestURI`: The request URI (Ex. `HttpRequestURI=/v1/user`)
+  - `HttpRequestMethod`: The request URI (Ex. `HttpRequestMethod=GET`)
+  - `HttpRequestEncoding`: The value of the request header `Accept-Encoding`
+  - `HttpRequestType`: The value of the request header `Content-Type`
+  - `HttpRequestAuthorization`: The value of the request header `Authorization` 
+  - `X-Client-ID`: The value of the request header `X-Client-ID`
+  - `X-Device-UID`: The value of the request header `X-Device-UID`
+  - `User-Agent`: The value of the request header `User-Agent`
+  - `X-Trace-ID`: The value of the request header `X-Trace-ID`
+  - `X-Message-ID`: The value of the request header `X-Message-ID`
+  - `X-Parent-Message-ID`: The value of the request header `X-Parent-Message-ID`
+  - `HttpResponseStatus`: The response status code
+  - `HttpResponseEncoding`: The response encoding
+  - `HttpResponseType`: The response mime type
+  - `HttpResponseLength`: The response content length
 
 ## Tracking
 - [DeviceUIDProvider](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/tracking/DeviceUIDProvider.kt)
@@ -105,5 +105,5 @@ is the implementation that performs no translation, returns the text as is.
 - [DurationUtils](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/util/DurationUtils.kt)
 - [NumberUtils](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/util/NumberUtils.kt)
 - [Predicates](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/util/Predicates.kt)
-- [CamelCaseToSnakeCaseNamingStrategy](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/hibernate/CamelCaseToSnakeCaseNamingStrategy.kt)
+- [CamelCaseToSnakeCaseNamingStrategy](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/hibernate/CamelCaseToSnakeCaseNamingStrategy.kt):
  [Hibernate](https://hibernate.org/) class for supporting mapping from camel case (in POJO) to snake case (in DB).
