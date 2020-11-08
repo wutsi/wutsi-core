@@ -1,4 +1,4 @@
-`wutsi-core` core library
+`wutsi-core` offers standard utilities for functionalities commonly used for building software.
 
 
 ![](https://github.com/wutsi/wutsi-core/workflows/build/badge.svg)
@@ -6,12 +6,9 @@
 ![](https://img.shields.io/badge/language-kotlin-blue.svg)
 ![](https://img.shields.io/badge/maven-3.6+-blue)
 
-
-
 # Prerequisites
 - JDK 1.8
 - Maven 3.6+ 
-
 
 # Installation
 ```xml
@@ -22,10 +19,9 @@
 </dependency>
 ```
 
-View package details [here](https://github.com/wutsi/wutsi-core/packages)
+Package available [here](https://github.com/wutsi/wutsi-core/packages)
 
 # Features
-`wutsi-core` offers standard utilities for functionalities commonly used for building software.
 
 ## REST Exceptions
 - [BadRequestException](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/exception/BadRequestException.kt) for HTTP 400 errors
