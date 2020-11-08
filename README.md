@@ -75,13 +75,15 @@ is a Servlet filter that logs each HTTP calls. Each logs will always contains th
 is used to get or set the client device unique identifier.
 - [DeviceUIDFilter](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/tracking/DeviceUIDFilter.kt)
 is a servlet filter that ensure that each HTTP request is stamped with a unique device identifier.
- 
+
+
 ## Storage
 - [StorageService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/storage/StorageService.kt)
 is an interface to storing/retrieving files.
 - [LocalStorageService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/storage/StorageService.kt)
 is the implementation for storing/retrieving files on a local hard drive.
- 
+
+
 ## Caching
 - [CacheService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/cache/CacheService.kt)
 is an interface for accessing a cache.
@@ -89,6 +91,14 @@ is an interface for accessing a cache.
 is the implementation with an in-memory hashmap as cache. 
 - [NullCacheService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/cache/NullCacheService.kt)
 is the implementation to perform no-caching. 
+
+
+## Text Translation
+- [TranslateService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/translate/TranslateService.kt)
+is an interface to translating text.
+- [NullTranslateService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/translate/NullTranslateService.kt)
+is the implementation that performs no translation, returns the text as is. 
+
 
 ## Other
 - [DateUtils](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/util/DateUtils.kt)
