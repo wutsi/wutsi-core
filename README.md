@@ -27,7 +27,7 @@ View package details [here](https://github.com/wutsi/wutsi-core/packages)
 # Features
 `wutsi-core` offers standard utilities for functionalities commonly used for building software.
 
-## Wutsi REST Exceptions
+## REST Exceptions
 - [BadRequestException](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/exception/BadRequestException.kt) for HTTP 400 errors
 - [UnauthorizedException](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/exception/UnauthorizedException.kt) for HTTP 401 errors
 - [ForbiddenException](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/exception/ForbiddenException.kt) for HTTP 403 errors
@@ -47,7 +47,7 @@ All REST calls will include the following headers:
 - `X-Message-ID`: Identifier representing each *Message* of a *Trace*.
 - `X-Parent-Message-ID`: Identifier representing the parent of *Message* (Optional).
 
-All HTTP errors will be mapped to the Wutsi REST exceptions.
+All HTTP errors will be mapped to the [REST exceptions](#wutsi-rest-exceptions).
 
 ## Logging
 - [KVLogger](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/logging/KVLogger.kt)
