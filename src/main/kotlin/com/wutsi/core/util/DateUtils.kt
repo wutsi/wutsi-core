@@ -24,9 +24,18 @@ object DateUtils {
 
     fun beginingOfTheDay(date: Date) = toDate(toLocalDate(date))
 
+    fun endOfTheDay(date: Date) = addMinutes(
+        date = addDays(beginingOfTheDay(date), 1),
+        offset = -1
+    )
+
     fun addDays(date: Date, offset: Int) = DateUtils.addDays(date, offset)
 
     fun addMonths(date: Date, offset: Int) = DateUtils.addMonths(date, offset)
+
+    fun addMinutes(date: Date, offset: Int) = DateUtils.addMinutes(date, offset)
+
+    fun addHours(date: Date, offset: Int) = DateUtils.addHours(date, offset)
 
     fun yesterday() = DateUtils.addDays(Date(), -1)
 
