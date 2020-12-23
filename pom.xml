@@ -125,7 +125,13 @@
             <url>https://maven.pkg.github.com/wutsi/wutsi-core</url>
         </repository>
     </distributionManagement>
-
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>bintray</name>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
 
     <build>
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
