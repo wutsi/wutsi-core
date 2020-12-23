@@ -6,7 +6,7 @@
 
     <groupId>com.wutsi</groupId>
     <artifactId>wutsi-core</artifactId>
-    <version>1.24.0</version>
+    <version>1.25.0</version>
 
     <properties>
         <jacoco.threshold.line>0.39</jacoco.threshold.line>
@@ -16,6 +16,7 @@
         <!-- Library versions - in ALPHABETICAL ORDER-->
         <common-lang.version>2.4</common-lang.version>
 
+        <bitly-api-client.version>0.8.0</bitly-api-client.version>
         <hibernate.version>5.2.17.Final</hibernate.version>
         <javax.servlet.version>3.1.0</javax.servlet.version>
         <junit.version>4.13.1</junit.version>
@@ -95,6 +96,11 @@
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>${common-lang.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.swisstech</groupId>
+            <artifactId>bitly-api-client</artifactId>
+            <version>${bitly-api-client.version}</version>
         </dependency>
 
         <!-- KOTLIN -->
