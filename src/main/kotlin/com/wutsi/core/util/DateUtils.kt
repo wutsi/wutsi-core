@@ -3,6 +3,7 @@ package com.wutsi.core.util
 import org.apache.commons.lang.time.DateUtils
 import java.text.DateFormat
 import java.text.SimpleDateFormat
+import java.time.DayOfWeek.SUNDAY
 import java.time.LocalDate
 import java.time.ZoneId
 import java.util.Calendar
@@ -28,6 +29,14 @@ object DateUtils {
         date = addDays(beginingOfTheDay(date), 1),
         offset = -1
     )
+
+    fun beginingOfTheWeek(date: LocalDate): LocalDate {
+        var cur = date
+        while (cur.dayOfWeek != SUNDAY)
+            cur = cur.plusDays(-1)
+        return cur
+    }
+
 
     fun addDays(date: Date, offset: Int) = DateUtils.addDays(date, offset)
 
