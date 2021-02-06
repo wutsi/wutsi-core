@@ -24,6 +24,9 @@ open class KVLoggerImpl (
     val data: MutableMap<String, MutableList<String>> = Collections.synchronizedMap(mutableMapOf())
 
     override fun log() {
+        if (data.isEmpty())
+            return
+
         logger.info(toString())
         data.clear()
     }

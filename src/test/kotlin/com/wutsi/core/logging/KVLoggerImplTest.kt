@@ -7,6 +7,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentCaptor
 import org.mockito.Mock
+import org.mockito.Mockito.anyString
+import org.mockito.Mockito.never
 import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
 import org.slf4j.Logger
@@ -38,6 +40,15 @@ class KVLoggerImplTest {
 
         // Then
         verify<Logger>(logger).info("foo=bar john=doe valueDouble=3.5 valueInt=2 valueLong=1")
+    }
+
+    @Test
+    fun shouldNotLogWhenEmpty() {
+        // When
+        kv.log()
+
+        // Then
+        verify<Logger>(logger, never()).info(anyString())
     }
 
     @Test
