@@ -24,7 +24,7 @@
         <mockito.version>2.22.0</mockito.version>
         <slf4j.version>1.7.29</slf4j.version>
         <javax.persistence.version>2.2</javax.persistence.version>
-        <spring.version>5.1.11.RELEASE</spring.version>
+        <spring.version>5.3.19</spring.version>
     </properties>
 
     <dependencies>
