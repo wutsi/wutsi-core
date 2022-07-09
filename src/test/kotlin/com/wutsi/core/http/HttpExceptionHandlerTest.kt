@@ -1,6 +1,8 @@
 package com.wutsi.core.http
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.nhaarman.mockitokotlin2.doReturn
+import com.nhaarman.mockitokotlin2.whenever
 import com.wutsi.core.error.ErrorDto
 import com.wutsi.core.error.ErrorResponse
 import com.wutsi.core.exception.BadRequestException
@@ -9,17 +11,17 @@ import com.wutsi.core.exception.ForbiddenException
 import com.wutsi.core.exception.InternalErrorException
 import com.wutsi.core.exception.NotFoundException
 import com.wutsi.core.exception.UnauthorizedException
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
-import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.junit.jupiter.MockitoExtension
 import org.springframework.http.HttpStatus
 import org.springframework.web.client.HttpStatusCodeException
 
-@RunWith(MockitoJUnitRunner::class)
+@ExtendWith(MockitoExtension::class)
 class HttpExceptionHandlerTest {
     @Mock
     private lateinit var objectMapper: ObjectMapper
@@ -27,59 +29,60 @@ class HttpExceptionHandlerTest {
     @InjectMocks
     private lateinit var handler: HttpExceptionHandler
 
-    @Test(expected = NotFoundException::class)
-    fun handleNotFound () {
+    @Test
+    fun handleNotFound() {
         val ex = createException(HttpStatus.NOT_FOUND, "foo")
-        handler.handleException(ex)
+        assertThrows<NotFoundException> { handler.handleException(ex) }
     }
 
-    @Test(expected = ForbiddenException::class)
-    fun handleForbidden () {
+    @Test
+    fun handleForbidden() {
         val ex = createException(HttpStatus.FORBIDDEN, "foo")
-        handler.handleException(ex)
+        assertThrows<ForbiddenException> { handler.handleException(ex) }
     }
 
-    @Test(expected = UnauthorizedException::class)
-    fun handleUnauthorized () {
+    @Test
+    fun handleUnauthorized() {
         val ex = createException(HttpStatus.UNAUTHORIZED, "foo")
-        handler.handleException(ex)
+        assertThrows<UnauthorizedException> { handler.handleException(ex) }
     }
 
-    @Test(expected = ConflictException::class)
-    fun handleConflict () {
+    @Test
+    fun handleConflict() {
         val ex = createException(HttpStatus.CONFLICT, "foo")
-        handler.handleException(ex)
+        assertThrows<ConflictException> { handler.handleException(ex) }
     }
 
-    @Test(expected = BadRequestException::class)
-    fun handleBadRequest () {
+    @Test
+    fun handleBadRequest() {
         val ex = createException(HttpStatus.BAD_REQUEST, "foo")
-        handler.handleException(ex)
+        assertThrows<BadRequestException> { handler.handleException(ex) }
     }
 
-    @Test(expected = InternalErrorException::class)
-    fun handleInternalError () {
+    @Test
+    fun handleInternalError() {
         val ex = createException(HttpStatus.INTERNAL_SERVER_ERROR, "foo")
-        handler.handleException(ex)
+        assertThrows<InternalErrorException> { handler.handleException(ex) }
     }
 
-
-    @Test(expected = InternalErrorException::class)
-    fun handleRuntimeException () {
-        handler.handleException(RuntimeException("bad"))
+    @Test
+    fun handleRuntimeException() {
+        assertThrows<InternalErrorException> { handler.handleException(RuntimeException("bad")) }
     }
 
-    private fun createException(status:HttpStatus, errorCode: String): HttpStatusCodeException {
+    private fun createException(status: HttpStatus, errorCode: String): HttpStatusCodeException {
         val json = "FOO"
         val ex = mock(HttpStatusCodeException::class.java)
-        `when`(ex.responseBodyAsString).thenReturn(json)
-        `when`(ex.statusCode).thenReturn(status)
+        doReturn(json).whenever(ex).responseBodyAsString
+        doReturn(status).whenever(ex).statusCode
 
-        val response = ErrorResponse(error = ErrorDto(
+        val response = ErrorResponse(
+            error = ErrorDto(
                 code = errorCode,
                 message = "Error Message"
-        ))
-        `when`(objectMapper.readValue<ErrorResponse>(json, ErrorResponse::class.java)).thenReturn(response)
+            )
+        )
+        doReturn(response).whenever(objectMapper).readValue(json, ErrorResponse::class.java)
 
         return ex
     }

@@ -1,27 +1,27 @@
 package com.wutsi.core.logging
 
 
-import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.ArgumentCaptor
 import org.mockito.Mock
 import org.mockito.Mockito.anyString
 import org.mockito.Mockito.never
 import org.mockito.Mockito.verify
-import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.junit.jupiter.MockitoExtension
 import org.slf4j.Logger
 import java.io.IOException
+import kotlin.test.assertEquals
 
-@RunWith(MockitoJUnitRunner::class)
+@ExtendWith(MockitoExtension::class)
 class KVLoggerImplTest {
     @Mock
     private lateinit var logger: Logger
 
     private lateinit var kv: KVLoggerImpl
 
-    @Before
+    @BeforeEach
     fun setUp() {
         kv = KVLoggerImpl(logger, LoggerEncoder())
     }
@@ -39,7 +39,7 @@ class KVLoggerImplTest {
         kv.log()
 
         // Then
-        verify<Logger>(logger).info("foo=bar john=doe valueDouble=3.5 valueInt=2 valueLong=1")
+        verify(logger).info("foo=bar john=doe valueDouble=3.5 valueInt=2 valueLong=1")
     }
 
     @Test
@@ -48,7 +48,7 @@ class KVLoggerImplTest {
         kv.log()
 
         // Then
-        verify<Logger>(logger, never()).info(anyString())
+        verify(logger, never()).info(anyString())
     }
 
     @Test
@@ -61,7 +61,7 @@ class KVLoggerImplTest {
         kv.log()
 
         // Then
-        verify<Logger>(logger).info("foo=\"john doe\"")
+        verify(logger).info("foo=\"john doe\"")
     }
 
     @Test
@@ -74,7 +74,7 @@ class KVLoggerImplTest {
         kv.log()
 
         // Then
-        verify<Logger>(logger).info("A=doe Z=bar")
+        verify(logger).info("A=doe Z=bar")
     }
 
     @Test
@@ -91,7 +91,7 @@ class KVLoggerImplTest {
         // Then
         val msg = ArgumentCaptor.forClass(String::class.java)
         val exception = ArgumentCaptor.forClass(Throwable::class.java)
-        verify<Logger>(logger).error(msg.capture(), exception.capture())
+        verify(logger).error(msg.capture(), exception.capture())
         assertEquals("A=bar Exception=java.io.IOException ExceptionMessage=error Z=doe", msg.value)
         assertEquals(ex, exception.value)
     }
@@ -100,7 +100,8 @@ class KVLoggerImplTest {
     @Throws(Exception::class)
     fun shouldLogAMaximumOf10000Characters() {
         // Given
-        val ch100 = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890"
+        val ch100 =
+            "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890"
         val longString = StringBuilder()
         for (i in 0..999) {
             longString.append(ch100).append('\n')
@@ -115,7 +116,7 @@ class KVLoggerImplTest {
 
         // Then
         val msg = ArgumentCaptor.forClass(String::class.java)
-        verify<Logger>(logger).info(msg.capture())
+        verify(logger).info(msg.capture())
         assertEquals(KVLoggerImpl.MAX_LENGTH, msg.value.length)
     }
 
@@ -129,6 +130,6 @@ class KVLoggerImplTest {
         kv.log()
 
         // Then
-        verify<Logger>(logger).info("foo=bar")
+        verify(logger).info("foo=bar")
     }
 }

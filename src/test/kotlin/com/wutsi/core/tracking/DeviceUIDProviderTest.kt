@@ -1,19 +1,21 @@
 package com.wutsi.core.tracking
 
-import org.junit.Assert.assertEquals
-import org.junit.Test
-import org.junit.runner.RunWith
+import com.nhaarman.mockitokotlin2.doReturn
+import com.nhaarman.mockitokotlin2.whenever
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.ArgumentCaptor
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.verify
-import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.junit.jupiter.MockitoExtension
 import javax.servlet.http.Cookie
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
+import kotlin.test.assertEquals
 
-@RunWith(MockitoJUnitRunner::class)
+@ExtendWith(MockitoExtension::class)
 class DeviceUIDProviderTest {
     @Mock
     lateinit var request: HttpServletRequest
@@ -26,8 +28,8 @@ class DeviceUIDProviderTest {
 
     @Test
     fun getNullCookieNoAttributeShouldReturnNewUUID() {
-        `when`(request.cookies).thenReturn(null)
-        `when`(request.getAttribute(DeviceUIDProvider.COOKIE_NAME)).thenReturn(null)
+        doReturn(null).whenever(request).cookies
+        doReturn(null).whenever(request).getAttribute(DeviceUIDProvider.COOKIE_NAME)
 
         val value = provider.get(request)
 
@@ -36,12 +38,14 @@ class DeviceUIDProviderTest {
 
     @Test
     fun getCookieNotFoundNoAttributeShouldReturnNewUUID() {
-        `when`(request.cookies).thenReturn(arrayOf(
+        `when`(request.cookies).thenReturn(
+            arrayOf(
                 Cookie("foo1", "bar1"),
                 Cookie("foo2", "bar2"),
                 Cookie("foo3", "bar3")
-        ))
-        `when`(request.getAttribute(DeviceUIDProvider.COOKIE_NAME)).thenReturn(null)
+            )
+        )
+        doReturn(null).whenever(request).getAttribute(DeviceUIDProvider.COOKIE_NAME)
 
         val value = provider.get(request)
 
@@ -50,8 +54,8 @@ class DeviceUIDProviderTest {
 
     @Test
     fun getNullCookieWithAttributeShouldReturnAttributeValue() {
-        `when`(request.cookies).thenReturn(null)
-        `when`(request.getAttribute(DeviceUIDProvider.COOKIE_NAME)).thenReturn("foo")
+        doReturn(null).whenever(request).cookies
+        doReturn("foo").whenever(request).getAttribute(DeviceUIDProvider.COOKIE_NAME)
 
         val value = provider.get(request)
 

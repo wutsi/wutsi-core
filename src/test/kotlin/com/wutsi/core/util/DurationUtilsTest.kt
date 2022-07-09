@@ -1,7 +1,7 @@
 package com.wutsi.core.util
 
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import org.junit.jupiter.api.Test
+import kotlin.test.assertEquals
 
 class DurationUtilsTest {
     @Test

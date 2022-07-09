@@ -1,7 +1,7 @@
 package com.wutsi.core.url
 
-import junit.framework.Assert.assertEquals
-import org.junit.Test
+import org.junit.jupiter.api.Test
+import kotlin.test.assertEquals
 
 class BitlyUrlShortenerTest {
     val service = BitlyUrlShortener("7c6a88dd1ca7633b0d5e15336184848e0ec5d22c")

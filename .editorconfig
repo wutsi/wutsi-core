@@ -1,0 +1,21 @@
+root=true
+
+[*]
+charset=utf-8
+end_of_line=lf
+indent_style=space
+indent_size=4
+continuation_indent_size=4
+insert_final_newline=true
+trim_trailing_whitespace=true
+
+[*.{java, kt}]
+curly_bracket_next_line=false
+indent_brace_style=K&R
+spaces_around_operators=true
+spaces_around_brackets=outside
+spaces_around_operators=false
+wildcard_import_limit=99
+
+[*.{kt,kts}]
+disabled_rules=trailing-comma,multiline-if-else

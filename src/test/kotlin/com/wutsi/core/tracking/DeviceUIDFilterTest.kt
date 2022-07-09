@@ -1,18 +1,20 @@
 package com.wutsi.core.tracking
 
-import org.junit.Test
-import org.junit.runner.RunWith
+import com.nhaarman.mockitokotlin2.doReturn
+import com.nhaarman.mockitokotlin2.whenever
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.verify
-import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.junit.jupiter.MockitoExtension
 import javax.servlet.FilterChain
 import javax.servlet.ServletException
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-@RunWith(MockitoJUnitRunner::class)
+@ExtendWith(MockitoExtension::class)
 class DeviceUIDFilterTest {
     @Mock
     lateinit var request: HttpServletRequest
@@ -31,7 +33,7 @@ class DeviceUIDFilterTest {
 
     @Test
     fun doFilter() {
-        `when`(duid.get(request)).thenReturn("xxx")
+        doReturn("xxx").whenever(duid).get(request)
 
         filter.doFilter(request, response, chain)
 
@@ -41,7 +43,7 @@ class DeviceUIDFilterTest {
 
     @Test
     fun doFilterWithError() {
-        `when`(duid.get(request)).thenReturn("the-id")
+        doReturn("the-id").whenever(duid).get(request)
         `when`(chain.doFilter(request, response)).thenThrow(ServletException::class.java)
 
         try {
@@ -49,7 +51,7 @@ class DeviceUIDFilterTest {
 
             verify(duid).set("the-id", request, response)
             verify(chain).doFilter(request, response)
-        } catch (ex: Exception){
+        } catch (ex: Exception) {
 
         }
     }

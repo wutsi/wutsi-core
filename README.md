@@ -1,14 +1,14 @@
 `wutsi-core` offers standard utilities for functionalities commonly used for building software.
 
 
-![](https://github.com/wutsi/wutsi-core/workflows/build/badge.svg)
+![](https://github.com/wutsi/wutsi-core/workflows/master/badge.svg)
 ![](https://img.shields.io/badge/jdk-1.8-brightgreen.svg)
 ![](https://img.shields.io/badge/language-kotlin-blue.svg)
 ![](https://img.shields.io/badge/maven-3.6+-blue)
 
 # Prerequisites
 - JDK 1.8
-- Maven 3.6+ 
+- Maven 3.6+
 
 # Installation
 ```xml
@@ -30,12 +30,12 @@ Package available [here](https://github.com/wutsi/wutsi-core/packages)
 - [NotFoundException](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/exception/NotFoundException.kt) for HTTP 404 errors
 - [ConflictException](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/exception/ConflictException.kt) for HTTP 409 errors
 - [InternalErrorException](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/exception/InternalErrorException.kt) for HTTP 500 errors
- 
+
 ## HTTP
 [Http](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/http/Http.kt)
 offers a simple interface for calling REST endpoint via `GET`, `POST`, `PUT`, `DELETE` methods.
 
-All REST calls will include the following headers: 
+All REST calls will include the following headers:
 - `X-Client-ID`: Identifier of the caller
 - `X-Device-UID`: Unique Identifier of device of the caller.
 - `User-Agent`: User Agent of the client's device.
@@ -54,7 +54,7 @@ is a Servlet filter that logs each HTTP calls. Each logs will always contains th
   - `HttpRequestMethod`: The request URI (Ex. `HttpRequestMethod=GET`)
   - `HttpRequestEncoding`: The value of the request header `Accept-Encoding`
   - `HttpRequestType`: The value of the request header `Content-Type`
-  - `HttpRequestAuthorization`: The value of the request header `Authorization` 
+  - `HttpRequestAuthorization`: The value of the request header `Authorization`
   - `X-Client-ID`: The value of the request header `X-Client-ID`
   - `X-Device-UID`: The value of the request header `X-Device-UID`
   - `User-Agent`: The value of the request header `User-Agent`
@@ -84,16 +84,16 @@ is the implementation for storing/retrieving files on a local hard drive.
 - [CacheService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/cache/CacheService.kt)
 is an interface for accessing a cache.
 - [HashMapCacheService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/cache/HashMapCacheService.kt)
-is the implementation with an in-memory hashmap as cache. 
+is the implementation with an in-memory hashmap as cache.
 - [NullCacheService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/cache/NullCacheService.kt)
-is the implementation to perform no-caching. 
+is the implementation to perform no-caching.
 
 
 ## Text Translation
 - [TranslateService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/translate/TranslateService.kt)
 is an interface to translating text.
 - [NullTranslateService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/translate/NullTranslateService.kt)
-is the implementation that performs no translation, returns the text as is. 
+is the implementation that performs no translation, returns the text as is.
 
 
 ## Other
