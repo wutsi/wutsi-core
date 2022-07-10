@@ -53,7 +53,7 @@ offers a simple interface for calling REST endpoint via `GET`, `POST`, `PUT`, `D
 All REST calls will include the following headers:
 
 - `X-Client-ID`: Identifier of the caller
-- `X-Device-UID`: Unique Identifier of device of the caller.
+- `X-Device-ID`: Unique Identifier of device of the caller.
 - `User-Agent`: User Agent of the client's device.
 - `X-Trace-ID`: Identifier representing *Trace*.
 - `X-Message-ID`: Identifier representing each *Message* of a *Trace*.
