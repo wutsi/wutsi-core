@@ -49,7 +49,7 @@ class KVLoggerFilterTest {
         doReturn("bearer: 320930293029").whenever(request).getHeader("Authorization")
         doReturn("client-id").whenever(request).getHeader(TraceContext.CLIENT_ID)
         doReturn("trace-id").whenever(request).getHeader(TraceContext.TRACE_ID)
-        doReturn("device-uid").whenever(request).getHeader(TraceContext.DEVICE_UID)
+        doReturn("device-uid").whenever(request).getHeader(TraceContext.DEVICE_ID)
         doReturn("message-id").whenever(request).getHeader(TraceContext.MESSAGE_ID)
         doReturn("parent-message-id").whenever(request).getHeader(TraceContext.PARENT_MESSAGE_ID)
 
@@ -96,7 +96,7 @@ class KVLoggerFilterTest {
         verify(kv).add(TraceContext.CLIENT_ID, "client-id")
         verify(kv).add(TraceContext.PARENT_MESSAGE_ID, "parent-message-id")
         verify(kv).add(TraceContext.MESSAGE_ID, "message-id")
-        verify(kv).add(TraceContext.DEVICE_UID, "device-uid")
+        verify(kv).add(TraceContext.DEVICE_ID, "device-uid")
         verify(kv).add(TraceContext.TRACE_ID, "trace-id")
 
         verify(kv).add("param1", value1.toList())
@@ -135,7 +135,7 @@ class KVLoggerFilterTest {
             verify(kv).add(TraceContext.CLIENT_ID, "client-id")
             verify(kv).add(TraceContext.PARENT_MESSAGE_ID, "parent-message-id")
             verify(kv).add(TraceContext.MESSAGE_ID, "message-id")
-            verify(kv).add(TraceContext.DEVICE_UID, "device-uid")
+            verify(kv).add(TraceContext.DEVICE_ID, "device-uid")
             verify(kv).add(TraceContext.TRACE_ID, "trace-id")
 
             verify(kv).log(e)

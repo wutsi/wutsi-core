@@ -25,7 +25,13 @@ class KVLoggerFilter(private val kv: KVLogger, var clock: Clock?) : Filter {
         try {
 
             filterChain.doFilter(servletRequest, servletResponse)
-            log(startTime, (servletResponse as HttpServletResponse).status, servletRequest as HttpServletRequest, servletResponse, kv)
+            log(
+                startTime,
+                (servletResponse as HttpServletResponse).status,
+                servletRequest as HttpServletRequest,
+                servletResponse,
+                kv
+            )
             kv.log()
 
         } catch (e: IOException) {
@@ -49,11 +55,11 @@ class KVLoggerFilter(private val kv: KVLogger, var clock: Clock?) : Filter {
     }
 
     private fun log(
-            startTime: Long,
-            status: Int,
-            request: HttpServletRequest,
-            response: HttpServletResponse,
-            kv: KVLogger
+        startTime: Long,
+        status: Int,
+        request: HttpServletRequest,
+        response: HttpServletResponse,
+        kv: KVLogger
     ) {
         val latencyMillis = clock!!.millis() - startTime
 
@@ -69,7 +75,7 @@ class KVLoggerFilter(private val kv: KVLogger, var clock: Clock?) : Filter {
         kv.add(TraceContext.MESSAGE_ID, request.getHeader(TraceContext.MESSAGE_ID))
         kv.add(TraceContext.CLIENT_ID, request.getHeader(TraceContext.CLIENT_ID))
         kv.add(TraceContext.PARENT_MESSAGE_ID, request.getHeader(TraceContext.PARENT_MESSAGE_ID))
-        kv.add(TraceContext.DEVICE_UID, request.getHeader(TraceContext.DEVICE_UID))
+        kv.add(TraceContext.DEVICE_ID, request.getHeader(TraceContext.DEVICE_ID))
 
         kv.add("HttpResponseStatus", status.toLong())
         kv.add("HttpResponseEncoding", response.getHeader("Content-Encoding"))
@@ -77,6 +83,6 @@ class KVLoggerFilter(private val kv: KVLogger, var clock: Clock?) : Filter {
         kv.add("HttpResponseLength", response.getHeader("Content-Length"))
 
         val params = request.parameterMap
-        params.keys.forEach{ kv.add(it, params[it]?.toList()) }
+        params.keys.forEach { kv.add(it, params[it]?.toList()) }
     }
 }

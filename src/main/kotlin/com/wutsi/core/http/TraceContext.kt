@@ -6,7 +6,7 @@ interface TraceContext {
         const val MESSAGE_ID = "X-Message-ID"
         const val PARENT_MESSAGE_ID = "X-Parent-Message-ID"
         const val CLIENT_ID = "X-Client-ID"
-        const val DEVICE_UID = "X-Device-ID"
+        const val DEVICE_ID = "X-Device-ID"
         const val USER_AGENT = "User-Agent"
     }
 

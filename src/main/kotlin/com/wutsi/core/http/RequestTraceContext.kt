@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest
 
 @Service
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
-open class RequestTraceContext(private val request: HttpServletRequest): TraceContext {
+open class RequestTraceContext(private val request: HttpServletRequest) : TraceContext {
     companion object {
         const val DUID_COOKIE: String = DeviceUIDProvider.COOKIE_NAME
     }
@@ -22,15 +22,15 @@ open class RequestTraceContext(private val request: HttpServletRequest): TraceCo
 
     override fun deviceUid(): String {
         // Get from header
-        var id = request.getHeader(TraceContext.DEVICE_UID)
+        var id = request.getHeader(TraceContext.DEVICE_ID)
 
         // Get from attributes
-        if (id == null){
+        if (id == null) {
             id = request.getAttribute(DUID_COOKIE)?.toString()
         }
 
         // Get from cookies
-        if (id == null){
+        if (id == null) {
             val cookie = getCookie(DUID_COOKIE)
             id = cookie?.value
         }
@@ -42,9 +42,9 @@ open class RequestTraceContext(private val request: HttpServletRequest): TraceCo
 
     override fun traceId(): String {
         val id = request.getHeader(TraceContext.TRACE_ID)
-        if (id == null){
+        if (id == null) {
             val savedId = request.getAttribute(TraceContext.TRACE_ID)
-            if (savedId == null){
+            if (savedId == null) {
                 val newId = UUID.randomUUID().toString()
                 request.setAttribute(TraceContext.TRACE_ID, newId)
                 return newId
