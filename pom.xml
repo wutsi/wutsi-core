@@ -4,7 +4,7 @@
 
     <groupId>com.wutsi</groupId>
     <artifactId>wutsi-core</artifactId>
-    <version>2.0.5-SNAPSHOT</version>
+    <version>2.0.5</version>
 
     <properties>
         <jacoco.threshold.line>0.45</jacoco.threshold.line>
@@ -133,7 +133,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/wutsi/wutsi-core.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>wutsi-core-2.0.5</tag>
     </scm>
     <distributionManagement>
         <repository>
