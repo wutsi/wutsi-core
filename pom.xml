@@ -25,7 +25,7 @@
         <mockito-junit-jupiter.version>4.5.1</mockito-junit-jupiter.version>
         <slf4j.version>1.7.36</slf4j.version>
         <javax.persistence.version>2.2</javax.persistence.version>
-        <spring.version>5.3.21</spring.version>
+        <spring.version>6.0.0</spring.version>
     </properties>
 
     <dependencies>
