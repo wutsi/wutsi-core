@@ -16,7 +16,7 @@
 
         <javax.servlet.version>4.0.1</javax.servlet.version>
         <junit.version>5.8.2</junit.version>
-        <jackson.version>2.13.3</jackson.version>
+        <jackson.version>2.13.4.2</jackson.version>
         <kotlin.version>1.7.10</kotlin.version>
         <kotlin-mockito.version>2.2.0</kotlin-mockito.version>
         <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
